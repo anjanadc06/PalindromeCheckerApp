@@ -1,29 +1,20 @@
-public class PalindromeCheckerApp {
+public class PalindroneCheckerApp {
+    public static void main(String[] args){
+        // Hardcoded input
+        String input = "madam";
+        String reversed = "";
 
-    /**
-     * Application entry point for UC2.
-     * @param args Command-line arguments
-     */
-    public static void main(String[] args) {
-
-        // Hardcoded string
-        String word = "madam";
-
-        boolean isPalindrome = true;
-
-        // Compare characters from both ends
-        for (int i = 0; i < word.length() / 2; i++) {
-            if (word.charAt(i) != word.charAt(word.length() - 1 - i)) {
-                isPalindrome = false;
-                break;
-            }
+        // Reverse the string
+        for (int i = input.length() - 1; i >= 0; i--) {
+            reversed = reversed + input.charAt(i);
         }
 
-        // Print result
-        if (isPalindrome) {
-            System.out.println("The word \"" + word + "\" is a palindrome.");
-        } else {
-            System.out.println("The word \"" + word + "\" is not a palindrome.");
-        }
+        // Compare original and reversed
+        boolean isPalindrome = input.equals(reversed);
+
+        // Display result
+        System.out.println("Input text: " + input);
+        System.out.println("Reversed text: " + reversed);
+        System.out.println("Is it a Palindrome? : " + isPalindrome);
     }
 }
