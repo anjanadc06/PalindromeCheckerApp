@@ -1,27 +1,36 @@
 public class PalindroneCheckerApp {
     public static void main(String[] args){
-        String input = "madam";
+        String input = "racecar";
 
-        boolean isPalindrome = check(input, 0, input.length() - 1);
+        PalindromeChecker checker = new PalindromeChecker();
+
+        boolean isPalindrome = checker.checkPalindrome(input);
 
         System.out.println("Input : " + input);
         System.out.println("Is Palindrome? : " + isPalindrome);
     }
+}
 
-    // Recursive method
-    private static boolean check(String s, int start, int end) {
+// Encapsulated Service Class
+class PalindromeChecker {
 
-        // Base condition: if pointers cross or meet
-        if (start >= end) {
-            return true;
-        }
+    // Public method exposed to users
+    public boolean checkPalindrome(String input) {
 
-        // If mismatch found
-        if (s.charAt(start) != s.charAt(end)) {
+        if (input == null)
             return false;
+
+        int start = 0;
+        int end = input.length() - 1;
+
+        while (start < end) {
+            if (input.charAt(start) != input.charAt(end)) {
+                return false;
+            }
+            start++;
+            end--;
         }
 
-        // Recursive call moving inward
-        return check(s, start + 1, end - 1);
+        return true;
     }
 }
